@@ -4,14 +4,16 @@ import csv
 import optparse
 import subprocess
 import os
-import tempfile
+import logging
+import logging.handlers
+
 
 import sys
 sys.path.append("..")
 
 from util.mylogs import Logger
 from util.htmlstyling import highlight_color, html
-from util.properties import getconfigprop
+from src.util.properties import getconfigprop
 
 
 #Initiate Logs

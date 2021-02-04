@@ -1,5 +1,4 @@
 from util.mylogs import Logger
-from jproperties import Properties
 
 #load the properties file into our Properties object
 LOG = Logger()

@@ -4,14 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c0a44c2a-db16-47fc-be20-0ab555358b6c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>UnitTesting.py</StartupFile>
+    <StartupFile>TestConverters.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>
     </WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>UnitTesting</Name>
-    <RootNamespace>UnitTesting</RootNamespace>
+    <Name>TestConverters</Name>
+    <RootNamespace>TestConverters</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
@@ -24,7 +24,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="UnitTesting.py" />
+    <Compile Include="TestConverters.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.7" />
