@@ -2,10 +2,7 @@ import pandas as pd
 import numpy as np
 import csv
 import optparse
-import subprocess
 import os
-import logging
-import logging.handlers
 
 
 import sys
@@ -13,8 +10,7 @@ sys.path.append("..")
 
 from util.mylogs import Logger
 from util.htmlstyling import highlight_color, html
-from src.util.properties import getconfigprop
-
+from util.properties import getconfigprop
 
 #Initiate Logs
 LOG = Logger()
@@ -22,13 +18,15 @@ LOG.info("Test Execution is Started...")
  
 #Read input file path
 configs=getconfigprop()
-input=configs.get("input").data
+try:
+    input=configs.get("input").data
+except AttributeError:
+    print(configs.get("input"))
 
 #Run Transformation through command line
 
-LOG.info("Transformation ran succesfully")
 ##subprocess.call(r'RunPentahoJob.bat')
-
+LOG.info("Transformation ran succesfully")
 #Read the output files from pentaho
 LOG.info("Read pentaho output files for comparison...")
 try:
