@@ -11,11 +11,14 @@ echo "Dependencies downloaded successfully"
 
 echo "Starting Pentaho Job.."
 
-if %ExecutableFiles%==2 (
+if %NoOfFiles%==2 (
+	echo %NoOfFiles%
 	echo "Multiple transformation is Initiated"
 	call %base_dir%pan.bat /file:"%file_path1%" "/level=Basic" /logfile="%input%\%LOGFILE%" "-param:input=%input%"
 	call %base_dir%pan.bat /file:"%file_path2%" "/level=Basic" /logfile="%input%\%LOGFILE%" "-param:input=%input%"
 	) else (
+	echo %NoOfFiles%
+	echo "Only one transformation is Initiated"
 	call %base_dir%pan.bat /file:"%file_path1%" "/level=Basic" /logfile="%input%\%LOGFILE%" "-param:input=%input%"
 	)
 
