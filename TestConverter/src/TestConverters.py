@@ -4,7 +4,6 @@ import csv
 import optparse
 import os
 import tempfile
-import xlrd
 from openpyxl import Workbook
 
 
