@@ -4,6 +4,9 @@ import csv
 import optparse
 import os
 import tempfile
+import xlrd
+from openpyxl import Workbook
+
 
 
 import sys
@@ -73,8 +76,9 @@ except Exception as e:
 #merge the files
 try:
     LOG.info("Merge the files")
-    merge_calc_file = pd.merge(left=invoice_total_file_new, right=usage_total_file, how='outer', left_index=True, right_index=True) 
-    merge_file = pd.merge(left=merge_calc_file, right=mapping_file['Line Totals Expected'], how='outer', left_index=True, right_index=True) 
+    
+    merge_calc_file = pd.merge(left=invoice_total_file_new, right=usage_total_file, how='outer', left_index=True, right_index=True)
+    merge_file = pd.merge(left=merge_calc_file, right=mapping_file['Line Totals Expected'], how='outer', left_index=True, right_index=True)
     LOG.info("Merging is successful")
 except Exception as e:
     LOG.error("Merging is not successful")
