@@ -1,7 +1,6 @@
 import logging
 import logging.handlers
 
-
         
 def Logger():
     logging.basicConfig(level=logging.INFO,

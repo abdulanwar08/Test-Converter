@@ -2,9 +2,11 @@ import pandas as pd
 import numpy as np
 import csv
 import optparse
-import subprocess
 import os
 import tempfile
+from openpyxl import Workbook
+
+
 
 import sys
 sys.path.append("..")
@@ -13,20 +15,21 @@ from util.mylogs import Logger
 from util.htmlstyling import highlight_color, html
 from util.properties import getconfigprop
 
-
 #Initiate Logs
 LOG = Logger()
 LOG.info("Test Execution is Started...")
  
 #Read input file path
 configs=getconfigprop()
-input=configs.get("input").data
+try:
+    input=configs.get("input").data
+except AttributeError:
+    print(configs.get("input"))
 
 #Run Transformation through command line
 
-LOG.info("Transformation ran succesfully")
 ##subprocess.call(r'RunPentahoJob.bat')
-
+LOG.info("Transformation ran succesfully")
 #Read the output files from pentaho
 LOG.info("Read pentaho output files for comparison...")
 try:
@@ -72,8 +75,9 @@ except Exception as e:
 #merge the files
 try:
     LOG.info("Merge the files")
-    merge_calc_file = pd.merge(left=invoice_total_file_new, right=usage_total_file, how='outer', left_index=True, right_index=True) 
-    merge_file = pd.merge(left=merge_calc_file, right=mapping_file['Line Totals Expected'], how='outer', left_index=True, right_index=True) 
+    
+    merge_calc_file = pd.merge(left=invoice_total_file_new, right=usage_total_file, how='outer', left_index=True, right_index=True)
+    merge_file = pd.merge(left=merge_calc_file, right=mapping_file['Line Totals Expected'], how='outer', left_index=True, right_index=True)
     LOG.info("Merging is successful")
 except Exception as e:
     LOG.error("Merging is not successful")
