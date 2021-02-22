@@ -39,7 +39,6 @@ try:
 except Exception as e:
     LOG.error("Output filenames are not available in property file")
     LOG.error(e)
-    
 usage_total_file=pd.read_csv(usg_tot_path,sep=';',index_col=0)
 usage_total_file.columns += '_output'
 invoice_total_file=pd.read_csv(inv_tot_path,sep=';')
@@ -77,7 +76,7 @@ try:
     LOG.info("Merge the files")
     
     merge_calc_file = pd.merge(left=invoice_total_file_new, right=usage_total_file, how='outer', left_index=True, right_index=True)
-    merge_file = pd.merge(left=merge_calc_file, right=mapping_file['Line Totals Expected'], how='outer', left_index=True, right_index=True)
+    merge_file = pd.merge(left=merge_calc_file, right=mapping_file['Line Totals Expected'].round(decimals=4), how='outer', left_index=True, right_index=True)
     LOG.info("Merging is successful")
 except Exception as e:
     LOG.error("Merging is not successful")
